@@ -49,3 +49,9 @@ button {
   background-color: goldenrod;
   font-weight: 600;
 }
+.footer {
+  position: fixed;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+}
