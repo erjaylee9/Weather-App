@@ -10,6 +10,7 @@
     <title>Weather App</title>
   </head>
   <body style="background-color:rgb(55, 177, 214);">
+    <div class="container">
     <div class="heading">
      <h1 style="font-size: 4vw;">
         <img src="" id="icon">
@@ -28,6 +29,13 @@
        </span>
      </h2>
     </div>
+    <div class="weather-details">
+    <ul>
+      <li id="description">Sunny</li>
+      <li> Humidity: <span id="humidity"></span>%</li>
+      <li>Wind: <span id="wind"></span> km/h</li>
+    </ul>
+    </div>
     <div class="row">
   <div class="col">72°/68° </br> ☀️ </br> Monday</div>
   <div class="col">70°/68° </br> ☀️ </br> Tuesday</div>
@@ -36,7 +44,7 @@
   <div class="col">80°/75° </br> ☀️ </br> Friday</div>
   </div>
  <form style ="text-align:center;">
-<input type="search" id="city-search" name="q" placeholder="Search for a city">
+<input type="search" id="city-search" placeholder="Search for a city">
 <button class="btn btn-warning" id="special-button">Search</button>
 <button type="button" class="btn btn-primary" id="current-location">Current Location</button>
 
@@ -47,6 +55,7 @@
     <a href="https://github.com/erjaylee9/Weather-App" target="_blank">Open-Source Code</a>
     by Erica Lee
     </small>
+  </div>
 </div>
 <script src="script.js"></script>
  </body>

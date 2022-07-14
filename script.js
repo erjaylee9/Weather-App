@@ -24,7 +24,9 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let iconElement = document.querySelector("#icon");
-
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
   fahrenheitTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -33,6 +35,9 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 function search(city) {
   let apiKey = "6c5621af472ccc1d447bcf74c7a52dd4";
