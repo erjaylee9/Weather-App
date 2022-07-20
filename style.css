@@ -32,11 +32,10 @@ label {
   font-weight: 500;
 }
 
-.col {
-  text-align: center;
+.forecast {
   font-size: 30px;
-  position: relative;
-  top: 20px;
+  margin: auto;
+  text-align: center;
 }
 
 input {
