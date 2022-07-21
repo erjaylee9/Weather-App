@@ -20,6 +20,35 @@ let day = days[now.getDay()];
 document.getElementById("current-time").innerHTML =
   day + "      " + hours + ":" + minutes;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2"><div class="forecast-date">${day} </div> 
+  <img src="" width="60"/>
+  <div class="forecast-temperatures">
+  <span class="forcast-max-temp"> 70° </span>
+  <span class="forcast-min-temp"> 68° </span>
+  </div>
+  </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -27,6 +56,7 @@ function displayTemperature(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+
   fahrenheitTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -78,3 +108,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 search("New York");
+displayForecast();
