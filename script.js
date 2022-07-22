@@ -20,7 +20,8 @@ let day = days[now.getDay()];
 document.getElementById("current-time").innerHTML =
   day + "      " + hours + ":" + minutes;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.list);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -49,6 +50,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "6c5621af472ccc1d447bcf74c7a52dd4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -68,6 +75,8 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  getForecast(response.data.coord);
 }
 function search(city) {
   let apiKey = "6c5621af472ccc1d447bcf74c7a52dd4";
@@ -108,4 +117,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 search("New York");
-displayForecast();
