@@ -21,26 +21,21 @@ document.getElementById("current-time").innerHTML =
   day + "      " + hours + ":" + minutes;
 
 function displayForecast(response) {
-  console.log(response.data.list);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
-      `<div class="col-2"><div class="forecast-date">${day} </div> 
-  <img src="" width="60"/>
+      `<div class="col-2"><div class="forecast-date">${forecastDay.dt} </div> 
+  <img src="http://openweathermap.org/img/wn/${
+    forecastDay.weather[0].icon
+  }@2x.png" width="60"/>
   <div class="forecast-temperatures">
-  <span class="forcast-max-temp"> 70° </span>
-  <span class="forcast-min-temp"> 68° </span>
+  <span class="forecast-max-temp"> ${Math.round(forecastDay.temp.max)}° </span>
+  <span class="forecast-min-temp"> ${Math.round(forecastDay.temp.min)}° </span>
   </div>
   </div>`;
   });
